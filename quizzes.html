@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <title>MyWebPorfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+    }
+    body {
+      background: url('moons.jpg') center/cover no-repeat;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(0, 0, 20, 0.8);
+      color: #fff;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 0 15px #4fc3f7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      margin: 0;
+      color: #ffd740;
+    
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 2rem;
+      font-size: 1.1rem;
+    }
+
+    nav a {
+      color: #80d8ff;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #fff176;
+    }
+
+    section {
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 0.5rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: #80d8ff;
+      cursor: pointer;
+      position: absolute;
+      right: 1rem;
+      top: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 20, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+      nav ul.open {
+        display: flex;
+      }
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 120px);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: #ffd740;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    p {
+      font-size: 1.0rem;
+      max-width: 800px;
+      line-height: 1.6;
+      margin: 1rem auto;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    button {
+
+      padding: 1rem;
+      margin: 1rem;
+      cursor: pointer;
+      background-color: #343ea7;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      width: 230px;
+      height: 230px;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 0 10px rgba(79, 195, 247, 0.4);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    button:hover {
+      background-color: #3949ab;
+      transform: scale(1.05);
+    }
+
+    button .score {
+      font-size: 0.9rem;
+      color: #ffd740;
+      margin-top: 0.5rem;
+      text-shadow: 1px 1px 2px #000;
+    }
+    #quizzes-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap; 
+  margin-top: 2rem;
+}
+
+.quiz-box {
+  background: rgba(0, 0, 40, 0.7);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #4fc3f7;
+  text-align: center;
+}
+
+.quiz-box h3 {
+  color: #ffd740;
+  margin-bottom: 0.5rem;
+}
+
+.quiz-box button {
+  background-color: #343ea7;
+  color: #001f3f;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+
+.score {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(10, 10, 32, 0.9);
+    }
+
+    .modal-content {
+      display: block;
+      margin: auto;
+      max-width: 98%;
+      max-height: 98%;
+    
+      border-radius: 8px;
+    }
+
+    .close {
+      position: fixed;
+      top: 20px;
+      right: 60px;
+      color: #ffd740;
+      font-size: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 4000;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: #ffffff;
+    }
+    
+    @media (max-width: 600px) {
+  footer p {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+    footer {
+      background-color: rgba(0, 0, 20, 0.8);
+      color: #ccc;
+      text-align: center;
+      padding: 0.5rem;
+      box-shadow: 0 -5px 15px #4fc3f7;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #80d8ff;
+      text-decoration: none;
+      margin: 0 5px;
+     
+    }
+    footer p a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;  
+  color: #80d8ff; 
+  text-decoration: none; 
+   }
+
+   footer p a:hover {
+  text-decoration: underline;  
+  }
+   footer p {
+  display: flex;
+  justify-content: center;  
+  gap: 1rem;  
+  }
+
+    footer a:hover {
+      color: #fff176;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <p>Arianne Q. Jose</p>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="quizzes.html">Quizzes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<main>
+<br><br>
+  <section id="quizzes">
+    <h3>Pre Test</h3>
+    
+    <button onclick="openModal('images/pre1.png')">
+      Pre Test 1
+      <div class="score">Score: 13/15</div>
+    </button>
+    <button onclick="openModal('images/pre2.png')">
+      Pre Test 2
+      <div class="score">Score: 13/15</div>
+    </button>
+    <button onclick="openModal('images/pre5.png')">
+      Pre Test 3
+      <div class="score">Score: 15/15</div>
+    </button>
+    <button onclick="openModal('images/pre3.png')">
+      Pre Test 4
+      <div class="score">Score: 10/15</div>
+    </button>
+    <button onclick="openModal('images/pre4.png')">
+      Pre Test 5
+      <div class="score">Score: 14/20</div>
+    </button>
+  </section>
+
+  <br>
+  <br>
+  <section id="quizzes">
+    <h3>Post Test</h3>
+    <button onclick="openModal('images/post1.jpg')">
+      Post Test 1
+      <div class="score">Score: 16/20 <br> Date: March 6, 2025 </div>
+    </button>
+    <button onclick="openModal('images/post2.png')">
+      Post Test 2
+      <div class="score">Score: 20/20 <br> Date: March 13, 2025</div>
+    </button>
+    <button onclick="openModal('images/post3.png')">
+      Post Test 3
+     <br><div class="score">Score: 16/20 <br> Date: March 13, 2025</div>
+    </button>
+    <button onclick="openModal('images/post4.png')">
+      Post Test 4
+      <div class="score">Score: 17/20 <br> Date: April 2, 2025</div>
+    </button>
+    <button onclick="openModal('images/post5.png')">
+      Post Test 5
+      <div class="score">Score: 18/20 <br> Date: April 2, 2025</div>
+    </button>
+  </section>
+ <br>
+ <section id="quizzes-container">
+  <div class="quiz-box">
+    <h3>Long Quiz</h3>
+    <button onclick="openModal('images/longquiz.png')">
+     
+      <div class="score">Score: 22/40 <br> Date: April 3, 2025 </div>
+    </button>
+  </div>
+
+  <div class="quiz-box">
+    <h3>Midterm Examination</h3>
+    <button onclick="openModal('images/midterm.png')">
+     
+      <div class="score">Score: 45/70 <br> Date: April 10, 2025 </div>
+    </button>
+  </div>
+  <div class="quiz-box">
+    <h3>Project Grade</h3>
+    <button onclick="openModal('images/projectscore.jpg')">
+     
+      <div class="score">Score: 100/100 <br> Date: March 20, 2025 </div>
+    </button>
+  </div>
+</section>
+
+</main>
+
+<br><br>
+<footer id="contact">
+  <p>
+    <a href="mailto:ariannejose04@example.com">
+      <img src="images/gmail-icon.png" alt="Email" width="24" height="24"> ariannejose04@gmail.com
+    </a> |
+    <a href="https://www.linkedin.com/in/arianne-jose-325745360/" target="_blank">
+      <img src="images/linkedin-icon.png" alt="LinkedIn" width="24" height="24"> LinkedIn
+    </a> |
+    <a href="https://github.com/yourusername" target="_blank">
+      <img src="images/github-icon.png" alt="GitHub" width="24" height="24"> GitHub
+    </a>
+  </p>
+</footer>
+
+<div id="preTestModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="preTestImage">
+</div>
+
+<script>
+function toggleMenu() {
+  document.getElementById('nav-menu').classList.toggle('open');
+}
+
+function openModal(imageSrc) {
+  document.getElementById("preTestImage").src = imageSrc;
+  document.getElementById("preTestModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("preTestModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>

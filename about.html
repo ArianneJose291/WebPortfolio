@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyWebPorfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+    }
+    body {
+      background: url('moons.jpg') center/cover no-repeat;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(0, 0, 20, 0.8);
+      color: #fff;
+      padding: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 0 15px #4fc3f7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      margin: 0;
+      color: #ffd740;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 2rem;
+      font-size: 1.1rem;
+    }
+
+    nav a {
+      color: #80d8ff;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #fff176;
+    }
+
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: #80d8ff;
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 20, 0.95);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  nav ul.open {
+    display: flex;
+  }
+}
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 140px);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    section {
+      overflow: hidden;
+      border-radius: 10px;
+      padding: 2rem;
+      background-color: rgba(0, 0, 32, 0.6);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 800px;
+
+    }
+    h2 {
+      font-size: 2rem;
+      color: #ffd740;
+      text-shadow: 2px 2px 5px #000;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    h2 img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+    }
+
+    p {
+      color: white;
+      font-family: 'Audiowide', cursive;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin: 1rem 0;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    .profile-logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 0 10px #4fc3f7;
+  margin-bottom: 1rem;
+}
+.name-title {
+  font-size: 1.0rem;
+  color: #ffd740;
+  margin: 0.8rem 0;
+  text-shadow: 1px 1px 4px #000;
+  letter-spacing: 1px;
+}
+.name-title p{
+  text-align: start;
+}
+
+footer .footername{
+  margin-top: 1rem;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: white;
+      text-shadow: 1px 1px 3px #000;
+
+}
+.btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #80d8ff;
+      color: #001f3f;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #ffd740;
+      color: #000;
+    }
+
+    @media (max-width: 600px) {
+  footer p {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+    footer {
+      background-color: rgba(0, 0, 20, 0.8);
+      color: #ccc;
+      text-align: center;
+      padding: 0.5rem;
+      box-shadow: 0 -5px 15px #4fc3f7;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #80d8ff;
+      text-decoration: none;
+      margin: 0 5px;
+     
+    }
+    footer p a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;  
+  color: #80d8ff; 
+  text-decoration: none; 
+    }
+
+   footer p a:hover {
+  text-decoration: underline;  
+   }
+  footer p {
+  display: flex;
+  justify-content: center;  
+  gap: 1rem;  
+    }
+
+    footer a:hover {
+      color: #fff176;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <p>Arianne Q. Jose</p>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="quizzes.html">Quizzes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+        <img src="images/Picsart_24-03-15_16-08-30-498.jpg" style="width: 150px; height: 150px;" alt="My Picture" class="profile-logo">  
+        <h3 class="name-title">ARIANNE JOSE | IT </h3>
+        <p>
+        Hello! I'm a motivated and detail-oriented individual with a passion for exploring new ideas 
+        and tackling exciting challenges. I love working with others, learning new things, and discovering 
+        ways to improve myself both personally and professionally. <br>
+        This website is a space where I showcase my projects, interests, and experiences as I grow and pursue 
+        new opportunities in life and technology. <br>
+      </p>
+      <hr>
+      <div class="name-title">
+      <h3> Quick Look</h3>
+      <p>
+        Education: 2022 - Present 
+       <p> Cavite State University - Silang Campus <br>
+       <p>Bachelor of Science in Information Technology <br>
+       <p>Skills: Basic Programming (HTML, CSS, JavaScript), <br>  Network Cable Crimping, <br>  Basic Networking, <br> Microsoft Office Suite </p>
+       <br> <p>Thanks for visiting !
+      <br>
+      <a href="resume.pdf" target="_blank" class="btn">View My CV</a>
+      </a>
+    </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>
+      <a href="mailto:ariannejose04@example.com">
+        <img src="images/gmail-icon.png" alt="Email" width="24" height="24"> ariannejose04@gmail.com
+      </a> |
+      <a href="https://www.linkedin.com/in/arianne-jose-325745360/" target="_blank">
+        <img src="images/linkedin-icon.png" alt="LinkedIn" width="24" height="24"> LinkedIn
+      </a> |
+      <a href="https://github.com/yourusername" target="_blank">
+        <img src="images/github-icon.png" alt="GitHub" width="24" height="24"> GitHub
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-menu').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

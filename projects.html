@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Web Portfolio</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: url('moons.jpg') center/cover no-repeat;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(0, 0, 20, 0.8);
+      color: #fff;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 0 15px #4fc3f7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h3{
+      font-size: 2rem;
+      color: #ffd740;
+      text-shadow: 2px 2px 5px #000;
+      margin: 1rem 0;
+    }
+    header p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      margin: 0;
+      color: #ffd740;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 2rem;
+      font-size: 1.1rem;
+    }
+    nav a {
+      color: #80d8ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff176;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: #80d8ff;
+      cursor: pointer;
+      position: absolute;
+      right: 1rem;
+      top: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 20, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+      }
+      nav ul.open {
+        display: flex;
+      }
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    #projects {
+      margin-top: 2rem;
+    }
+
+    .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+   }
+
+
+    .project-card {
+      background: rgba(0, 0, 40, 0.7);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(79, 195, 247, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+ 
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(255, 215, 64, 0.6);
+    }
+    .project-card img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+   }
+
+  @media (max-width: 500px) {
+  .project-card img {
+    height: 200px;
+  }
+  nav ul {
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+
+    .project-info {
+      padding: 1rem;
+    }
+
+    .project-info h3 {
+      color: #80d8ff;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-info p {
+      font-size: 1rem;
+      color: #eee;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #80d8ff;
+      color: #001f3f;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #ffd740;
+      color: #000;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 20, 0.8);
+      color: #ccc;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      box-shadow: 0 -5px 15px #4fc3f7;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+  footer p {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+    footer {
+      background-color: rgba(0, 0, 20, 0.8);
+      color: #ccc;
+      text-align: center;
+      padding: 1.5rem;
+      box-shadow: 0 -5px 15px #4fc3f7;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #80d8ff;
+      text-decoration: none;
+      margin: 0 5px;
+     
+    }
+    footer p a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;  
+  color: #80d8ff; 
+  text-decoration: none; 
+ }
+
+   footer p a:hover {
+  text-decoration: underline;  
+  }
+   footer p {
+  display: flex;
+  justify-content: center;  
+  gap: 1rem;  
+  }
+
+   footer a:hover {
+      color: #fff176;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <p>Arianne Q. Jose</p>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="quizzes.html">Quizzes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="projects">
+      <h3>My Projects</h3>
+
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <img src="images/products.png" alt="Gym Website Homepage">
+          <div class="project-info">
+            <h3>Gym Website</h3>
+            <p>A modern fitness website offering pre-orders, food guides, and personalized workout recommendations.</p>
+            <a href="updated/Waweh VS/index.html" target="_blank" class="btn">View Project</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>
+      <a href="mailto:ariannejose04@example.com">
+        <img src="images/gmail-icon.png" alt="Email" width="24" height="24"> ariannejose04@gmail.com
+      </a> |
+      <a href="https://www.linkedin.com/in/arianne-jose-325745360/" target="_blank">
+        <img src="images/linkedin-icon.png" alt="LinkedIn" width="24" height="24"> LinkedIn
+      </a> |
+      <a href="https://github.com/yourusername" target="_blank">
+        <img src="images/github-icon.png" alt="GitHub" width="24" height="24"> GitHub
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-menu').classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Web Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: url('images/moons.jpg') center/cover no-repeat;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(0, 0, 20, 0.8);
+      color: #fff;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 0 15px #4fc3f7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      margin: 0;
+      color: #ffd740;
+      
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 2rem;
+      font-size: 1.1rem;
+    }
+
+    nav a {
+      color: #80d8ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #fff176;
+    }
+
+    .menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: #80d8ff;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem; 
+}
+
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 20, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+    }
+
+    h3 {
+      font-size: 2rem;
+      color: #ffd740;
+      text-shadow: 2px 2px 5px #000;
+      margin: 1rem 0;
+    }
+    h4 {
+      font-size: 1.5rem;
+      color: #ffd740;
+      text-shadow: 2px 2px 5px #000;
+      margin: 1rem 0;
+    }
+
+    .showcase {
+      margin: 0 auto 3rem;
+      text-align: center;
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 0.5rem;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #4fc3f7;
+    }
+    p {
+      color: white;
+    }
+    .welcome-message {
+  animation: popIn 2s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.8);
+  color: #ffd740;
+  font-size: 2rem;
+  margin: 2rem 0;
+  text-shadow: 2px 2px 5px #000;
+  text-align: center;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  footer p {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+   footer {
+      background-color: rgba(0, 0, 20, 0.8);
+      color: #ccc;
+      text-align: center;
+      padding: 1.5rem;
+      box-shadow: 0 -5px 15px #4fc3f7;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #80d8ff;
+      text-decoration: none;
+      margin: 0 5px;
+     
+    }
+    footer p a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;  
+  color: #80d8ff; 
+  text-decoration: none; 
+   }
+
+   footer p a:hover {
+  text-decoration: underline;  
+    }
+     footer p {
+  display: flex;
+  justify-content: center;  
+  gap: 1rem;  
+   }
+
+    footer a:hover {
+      color: #fff176;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <p>Arianne Q. Jose</p>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="quizzes.html">Quizzes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <br>
+  <p class="welcome-message">Hi! Welcome to my WebPortfolio</p>
+
+  <section class="showcase">
+    <br>
+    <br><h3>Featured Works</h3>
+    <p style="color: black;">Here are some screenshots of my projects</p>
+    <br><br>
+    <!-- Project 1 -->
+    <div class="gallery-item">
+      <h4>Gym Website</h4>
+      <div class="gallery">
+        <div class="gallery-item"><img src="images/home.png" alt="Home Page Screenshot">Homepage</div>
+        <div class="gallery-item"><img src="images/program.png" alt="Program Screenshot">Programs</div>
+        <div class="gallery-item"><img src="images/Apparel.png" alt="Apparel Screenshot">Apparel</div>
+        <div class="gallery-item"><img src="images/products.png" alt="Products Screenshot">Products</div>
+      
+      </div>
+    </div>
+    <br><br>
+    <!-- Project 2 -->
+    <div class="gallery-item">
+      <h4>Project 2: Coming Soon!!</h4>
+    </div>
+  </section>
+
+  <br><br>
+  <footer id="contact">
+    <p>
+      <a href="mailto:ariannejose04@example.com">
+        <img src="images/gmail-icon.png" alt="Email" width="24" height="24"> ariannejose04@gmail.com
+      </a> |
+      <a href="https://www.linkedin.com/in/arianne-jose-325745360/" target="_blank">
+        <img src="images/linkedin-icon.png" alt="LinkedIn" width="24" height="24"> LinkedIn
+      </a> |
+      <a href="https://github.com/yourusername" target="_blank">
+        <img src="images/github-icon.png" alt="GitHub" width="24" height="24"> GitHub
+      </a>
+    </p>
+  </footer>
+  
+  
+  
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-menu').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
